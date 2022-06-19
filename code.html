@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Chris Chambers</title>
+    <title>Hundo: A Coding Project by Chris Chambers</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,13 +17,18 @@
     <link href="css/prism.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon-32x32.png">
 
+    <!-- Google Fonts - Racing Sans One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="d-flex flex-column h-100">
     <!--  Nav Section  -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/Logo.png" class="d-inline-block align-text-top" width="30" height="30"> APP NAME</a>
+            <a class="navbar-brand logofont" href="#"><img src="img/New brand/Favicons/favicon-32x32.png" class="d-inline-block align-text-top" width="30" height="30"> Hundo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,14 +57,89 @@
     <!-- Main Section -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for Hundo.</h2>
            <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-javascript">
-                        //Call Hello World
-                        function HelloWorld(){
-                            alert('hello world');
+
+                        //Get values from the page
+                        //Starts or controller function
+                        
+                        function getValues(){
+                        
+                            //Get values from the page
+                        
+                            let startValue = parseInt(document.getElementById('startValue').value);
+                            let endValue = parseInt(document.getElementById('endValue').value);
+                            
+                        
+                            //Validating input as a number
+                        
+                            if(Number.isInteger(startValue) && Number.isInteger(endValue)){
+                        
+                                //we call generate numbers
+                        
+                                let numbers = generateNumbers(startValue, endValue);
+                        
+                                //we call display numbers
+                        
+                                displayNumbers(numbers);
+                        
+                            }else{
+                        
+                                alert('You must enter a number')
+                        
+                            }
+                        
+                        }
+                        
+                        //generate numbers from startValue to endValue
+                        //Logic function(s)
+                        function generateNumbers(startValue, endValue){
+                        
+                            let numbers = [];
+                        
+                            //We want to get all numbers from start to end
+                        
+                            for(let index = startValue; index <= endValue; index++){
+                                
+                                numbers.push(index);
+                        
+                            }
+                        
+                            return numbers;
+                        
+                        }
+                        
+                        //Display numbers and mark even numbers bold
+                        //Display or view functions
+                        function displayNumbers(numbers){
+                        
+                            let templateRows = '';
+                        
+                            for (let index = 0; index < numbers.length; index++) {
+                        
+                                let classname = 'even';
+                        
+                                let number = numbers[index];
+                        
+                                if(number % 2 == 0){
+                        
+                                    classname = 'even';
+                        
+                                }else{
+                        
+                                    classname = 'odd';
+                        
+                                }
+                        
+                                //Does not properly render with Prism
+                                templateRows += `<tr><td class="${classname}">${number}</td></tr>`;
+                                
+                            }
+                        
+                            document.getElementById('results').innerHTML = templateRows
                         }
                     </code>
                 </pre>
@@ -80,7 +160,7 @@
                     <div><span class="text-muted">&copy;2021</span> Chris Chambers | chambers3737@gmail.com</div>
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
-                    <img src="img/name no bg.png" alt="Chris Chambers Logo" height="24">
+                    <img src="img/new name-no bg.png" alt="Chris Chambers Logo" height="36">
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
